@@ -4,3 +4,4 @@ Dashboard for [Covid19] made with [Dart], [AngularDart] and hosted on [Google Cl
 [Dart]: https://dart.dev/
 [AngularDart]: https://github.com/angulardart
 [Covid19]: https://www.who.int/emergencies/diseases/novel-coronavirus-2019
+[Google Cloud] https://cloud.google.com/gcp
