@@ -1,0 +1,27 @@
+<div class="d-flex flex-column">
+    <span class="text-body"><b>Total confirmed COVID-19 cases, {{ selectDateString }}</b></span>
+    <div class="col-2 mt-0 d-flex flex-row text-black-50">
+        <a [class]="viewMapIdx == 0 ? 'badge badge-warning text-white':'badge border-primary'" (click)="update(0)">Total
+            cases</a>
+        <a [class]="viewMapIdx == 1 ? 'badge badge-warning text-white':'badge badge-light'" (click)="update(1)">Active
+            cases</a>
+        <a [class]="viewMapIdx == 2 ? 'badge badge-danger text-white':'badge badge-light'"
+            (click)="update(2)">Deaths</a>
+        <a [class]="viewMapIdx == 4 ? 'badge badge-warning text-white':'badge badge-light'"
+            (click)="update(4)">Critical</a>
+        <a [class]="viewMapIdx == 3 ? 'badge badge-success text-white':'badge badge-light'"
+            (click)="update(3)">Recovered</a>
+        <a [class]="viewMapIdx == 5 ? 'badge badge-primary text-white':'badge badge-light'"
+            (click)="update(5)">Tests</a>
+    </div>
+    <div class="clickable timeline-control" *ngIf="1==0">
+        <div>{{ sliderStartDay }}</div>
+        <div><i class="material-icons">play</i></div>
+        <div class="chart-slider">
+            <input type="range" min="1" max="30" [value]="sliderValue" (change)="onSliderChange($event)" class="slider" id="mydateRange">
+        </div>
+        <div>{{ sliderEndDay }}</div>
+    </div>
+    <div id="{{ container }}" class="mt-1 geomap"></div>
+
+</div>

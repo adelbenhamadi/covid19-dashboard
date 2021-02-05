@@ -1,0 +1,19 @@
+//delete this file! this is just a memo
+rules_version = '2';
+service firebase.storage {
+  match /b/YOUR_STORAGE_BUCKET_URL/o {
+    match /{allPaths=**} {
+      allow read, write;
+    }
+  }
+}
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /images/{imageId} {
+      // Only allow uploads of any image file that's less than 5MB
+      allow write: if request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

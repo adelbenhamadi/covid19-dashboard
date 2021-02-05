@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Covid-19 Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Covid-19 Dashboard">
+    <link href="assets/img/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!--fonts-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <!--theme-->
+    <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- app essentials-->
+    <link href="assets/css/d3-geomap.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <!--<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-storage.js"></script>
+
+    <script defer src="main.dart.js"></script>
+
+</head>
+
+<body>
+
+    <div class="layout layout-nav-top">
+        <!--top navbar-->
+        <div id="nav-topbar" class="d-flex bg-dark sticky-top">
+            <!-- brand Title-->
+            <a class="navbar-brand p-1 mr-1">
+                <div class="media-body align-self-center d-sm-block">
+                    <div class="line-height-1">
+                        <b>Covid-19</b>
+                        <span class="d-block badge badge-fill badge-danger" style="font-size: 60%;">Dashboard</span>
+                    </div>
+                </div>
+
+            </a>
+            <!--news scroller-->
+            <div id="ns011245" class="bg-dark telex"></div>
+        </div>
+        <my-app>
+            <div class="spinner">
+                <div class="m-auto justify-content-center">
+                    <img src="assets/img/loader.svg" alt="" class="">
+                </div>
+            </div>
+        </my-app>
+
+        <div class="text-center p-1 mt-5">
+            <!--<div id="copyright" class="clr"><span style="font-size: 70%;">Copyright 2020 - All Rights Reserved.</span></div>-->
+            <p class="text-muted" style="font-size: 65%;">Author: <a href="https://www.linkedin.com/in/adelbenhamadi"
+                    class="external">Adel BEN
+                    HAMADI</a>&nbsp;|&nbsp;
+                <a class="external" href="https://api-sports.io/documentation/covid-19">Api Data
+                    source</a>&nbsp;|&nbsp;Share on:
+                <button class="btn-link" data-sharer="twitter" data-title="Checkout Covid-19 Dashboard"
+                    data-hashtags="Covid19, Covid_19, coronavirus, dashboard"
+                    data-url="https://covid-19-933a7.firebaseapp.com">Twitter</button>
+
+                <button class="btn-link" data-sharer="facebook" data-hashtag="Covid_19"
+                    data-url="https://covid-19-933a7.firebaseapp.com">Facebook</button>
+                <button class="btn-link" data-sharer="linkedin"
+                    data-url="https://covid-19-933a7.firebaseapp.com">LinkedIn</button>
+                <button class="btn-link" data-sharer="whatsapp" data-title="Checkout Covid-19 Dashboard"
+                    data-url="https://covid-19-933a7.firebaseapp.com">Whatsapp</button>
+            </p>
+            <div class="text-muted text-small"><a href="" >Sources on Github</a></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Required vendor scripts-->
+
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <!-- d3plus -->
+    <script src="assets/js/d3.min.js"></script>
+    <script src="assets/js/d3plus.min.js"></script>
+    <script src="assets/js/d3plus-geomap.v0.6.full.js"></script>
+
+    <!-- telex-->
+    <script src="assets/js/telex.js"></script>
+    <!--chart.js 2.6.0-->
+    <script src="assets/js/chart.min.js"></script>
+    <!-- Autosize - resizes textarea inputs as user types 
+    <script type="text/javascript" src="assets/js/autosize.min.js"></script>-->
+    <!--share lib-->
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+    <script>
+        function timeSince(date) {
+
+            var seconds = Math.floor((new Date() - date) / 1000);
+
+            var interval = Math.floor(seconds / 31536000);
+
+            if (interval > 1) {
+                return interval + " years";
+            }
+            interval = Math.floor(seconds / 2592000);
+            if (interval > 1) {
+                return interval + " months";
+            }
+            interval = Math.floor(seconds / 86400);
+            if (interval > 1) {
+                return interval + " days";
+            }
+            interval = Math.floor(seconds / 3600);
+            if (interval > 1) {
+                return interval + " hours";
+            }
+            interval = Math.floor(seconds / 60);
+            if (interval > 1) {
+                return interval + " min";
+            }
+            return Math.floor(seconds) + " seconds";
+        }
+        function getData() {
+            $.get({
+                url: "https://newsapi.org/v2/top-headlines?q=coronavirus+covid&sortBy=publishedAt&apiKey=a6465e959e974134aea201b3deefbb04&pageSize=10&page=1",
+                // url: "https://newsapi.org/v2/everything?q=COVID&from=2020-05-01&sortBy=publishedAt&apiKey=a6465e959e974134aea201b3deefbb04&pageSize=50&page=1",
+                success: function (resp, s, x) {
+                    resp.articles = resp.articles.filter((obj, pos, arr) => {
+                        return arr.map(mapObj =>
+                            mapObj.title).indexOf(obj.title) == pos;
+                    });
+                     
+                    qns.messages = resp.articles.map(function (nw) {
+                        dt = new Date(nw.publishedAt);
+                        return "<div class=\"d-flex justify-content-between\">"
+                            + (nw.urlToImage ? "<img class=\"p-0\" src=\"" + nw.urlToImage + "\" width=\"50px\" height=\"50px\" >" : "")
+                            + "<div class=\"text-white ml-1\">"                           
+                            + nw.title
+                            + "<br>"
+                            + "<span class=\"text-muted text-small\">"
+                            + (nw.source ? nw.source.name : "")
+                            + "</span>&nbsp;"
+                            + "<span class=\"text-muted text-small\">"
+                            + " - " + "<span class=\"h7\">" + timeSince( dt) + " ago" + "</span>"
+                            + "</span>"
+                            + "&nbsp;<a class=\"text-small\" target=\"_blank\" href=\""
+                            + nw.url 
+                            + "\">Read more...</a>"    
+                            + "</div></div>"
+                            ;
+                    })
+                    qns.messages.unshift("<div class=\"d-flex justify-content-between\"><div class=\"text-white ml-1\"><a href=\"#\">News feed</a><br><span class=\"text-muted text-small\">Click to foloow</span></div>")        
+                }
+            })
+        }
+        $(document).ready(function () {
+            qns = Telex.widget('ns011245', { "speed": 60,"duration": 5000, "timing": "linear", "pauseOnHover": true }, []);
+            //  qns = Telex.widget('ns011245', { "speed": 40, "timing": "cubic-bezier(0.58, 0.0, 0.42, 1.0)", "direction": "reverse" }, [{ "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2226.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2227.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2230.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2232.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2234.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2236.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2238.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2242.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2244.jpg\" alt=\"\">" }, { "class": "msg-pic", "content": "<img src=\"/img/telexdemo/sp-2246.jpg\" alt=\"\">" }]);
+
+            getData();
+            setInterval(getData, 300000);   // 5 * 60 * 1000 ms = 5 min
+        });
+    </script>
+</body>
+
+</html>

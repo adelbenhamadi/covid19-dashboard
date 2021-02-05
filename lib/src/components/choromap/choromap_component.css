@@ -1,0 +1,99 @@
+.geomap{
+    width: 1050px;
+    height:550px;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+@media  (max-width: 1199px) and (min-width: 992px){
+    .geomap {
+       width: 933px;
+       height:500px;
+   }   
+}
+@media (min-width: 768px)and (max-width: 991px){
+.geomap {
+    width: 750px;
+    height:450px;
+}
+}
+@media  (max-width: 767px){
+  .geomap {
+      width: 550px;
+      height:400px;
+  }
+  }
+.timeline-control {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    padding: 0 1em;
+}
+.timeline-control>div {
+    margin-right: .5em;
+}
+
+.clickable {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+  .chart-slider {
+    width: 100%;  
+    height: .6em;
+    background: transparent;
+  }
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 10px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 10px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: rgb(76, 147, 175); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  } 
+/*
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.unit {
+    fill: #eee;
+    stroke: #fff;
+}
+
+
+.ui.my-container {
+    display: block;
+    max-width: 100%!important;
+}
+*/

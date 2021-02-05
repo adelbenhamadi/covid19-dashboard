@@ -1,0 +1,363 @@
+<div class="container-fluid">
+  <div class="row justify-content-center animated faden-in">
+
+    <div class="col-12 col-lg-12 col-xl-10">
+      <error *ngIf="hasError" [error]="dataEventService.lastError"></error>
+      <!--<div class="dashboard-header">
+        <div>
+          <span class="h3">Dashboard <button type="button" class="ml-0 pl-0 btn btn-link opac05"
+              (click)="reload(true);"><i class="material-icons">refresh</i></button></span>
+          <p class="text-muted text-small" *ngIf="!loading">last update: {{ formatDate(lastUpdate) }} GMT</p>
+        </div>
+      </div>-->
+
+      <!--nav-->
+      <div class="dashboard-nav mt-1">
+        <nav class="nav">
+          <a class="nav-link active show" data-toggle="tab" href="#overview" role="tab" aria-controls="overview"
+            aria-selected="true" (click)="loadOverview()">Overview</a>
+          <a class="nav-link" data-toggle="tab" href="#analytic" role="tab" aria-controls="analytic"
+            aria-selected="false" (click)="loadAnalytic()">Data analysis</a>
+          <a class="nav-link" data-toggle="tab" href="#pandemic" role="tab" aria-controls="pandemic"
+            aria-selected="false" (click)="loadPandemic()">Other Pandemics</a>
+          
+        </nav>
+        
+      </div>
+     <!--end nav-->
+      <!--begin tabs-->
+      <div *ngIf="loading && events.isEmpty" class="spinner">
+        <div class="m-auto justify-content-center">
+          <img src="assets/img/loader.svg" alt="" class="">
+      </div>
+      </div>
+      <div class="tab-content" *ngIf="events.isNotEmpty">
+        <!--tab overview-->
+        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+          <div class="text-muted">
+            <span class="h6 pr-3">Worldwide</span>
+            <span class="text-muted text-small" *ngIf="totCases>0">last update: {{ formatDate(lastUpdate) }} GMT</span>
+            <div *ngIf="loading" class="ml-1 spinner-border spinner-border-sm"></div>
+            <button *ngIf="!loading" type="button" class="ml-0 pl-0 btn-options d-inline-flex opac05"
+              (click)="reload(true)"><i class="material-icons">refresh</i></button>
+          </div>
+
+          <div class="row">
+            <div class="p-1 col-6 col-md-3">
+              <div class="card border border-primary shadow opac08">
+                <div class="p-2 text-center">
+                  <span class="text-small">Total Cases</span>
+                  <div class="h4">{{ formatNum(totCases) }}</div>
+                  <span class="text-muted">+{{ totCases - yesterdayCases }}&nbsp; <span class="h5 text-dark">+{{  yesterdayPercentCases.toStringAsFixed(2) }}%</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="p-1 col-6 col-md-3">
+              <div class="card border border-warning shadow opac08">
+                <div class="p-2 text-center">
+                  <span class="text-small">Active Cases</span>
+                  <div class="h4">{{ formatNum(totActive) }}</div>
+                  <span class="text-muted">{{ totActive - yesterdayActive>0 ? '+':'' }} {{ totActive - yesterdayActive }}&nbsp; <span class="h5 text-warning">{{ totActive - yesterdayActive>0 ? '+':'' }} {{  yesterdayPercentActive.toStringAsFixed(2) }}%</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="p-1 col-6 col-md-3">
+              <div class="card border border-danger shadow opac08">
+
+                <div class="p-2 text-center">
+                  <span class="text-small">Deaths</span>
+                  <div class="h4">{{ formatNum(totDeaths) }}</div>
+                  <span class="text-muted">+{{ totDeaths - yesterdayDeaths}}&nbsp; <span class="h5 text-danger">+{{  yesterdayPercentDeaths.toStringAsFixed(2) }}%</span></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="p-1 col-6 col-md-3">
+              <div class="card border border-success shadow opac08">
+                <div class="p-2 text-center">
+                  <span class="text-small">Recovered</span>
+                  <div class="h4">{{ formatNum(totRecovered) }}</div>
+                  <span class="text-muted">+{{ totRecovered - yesterdayRecovered }}&nbsp; <span class="h5 text-success">+{{  yesterdayPercentRecovered.toStringAsFixed(2) }}%</span></span>
+
+                </div>
+
+              </div>
+            </div>
+          </div>      
+          <div class="row">      
+            <choromap class="col-md-12" [eventData]="todayEvents" column="testr225" container="map225"></choromap>     
+        </div>
+        </div>
+        <!--tab analytic-->
+        <div class="tab-pane" id="analytic" role="tabpanel">
+          <div class="alert alert-info alert-dismissible fade show text-small">
+            <strong>Hint:</strong>
+            Click on any column header, in below table, to sort by and click on country name to show its history data
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+       
+          <div class="d-flex justify-content-between flex-wrap">
+            <div class="col-auto">
+              <div class="mt-1 h5 d-flex flex-row" *ngIf="selectedCountry==null">
+                <a [class]="selectedRegion == 'Africa' ? 'badge badge-warning':'badge badge-light'"  (click)="onSelectRegion('Africa')">Africa</a>
+                <a [class]="selectedRegion == 'America' ? 'badge badge-warning':'badge badge-light'"  (click)="onSelectRegion('America')">America</a>
+                <a [class]="selectedRegion == 'Asia' ? 'badge badge-warning':'badge badge-light'"  (click)="onSelectRegion('Asia')">Asia</a>
+                <a [class]="selectedRegion == 'Europe' ? 'badge badge-warning':'badge badge-light'"  (click)="onSelectRegion('Europe')">Europe</a>
+                <a [class]="selectedRegion == 'Oceania' ? 'badge badge-warning':'badge badge-light'"  (click)="onSelectRegion('Oceania')">Oceania</a>
+                <a [class]="selectedRegion == '' ? 'badge badge-warning':'badge badge-light'"  (click)="onSelectRegion('')">All</a>
+                <!--<span class="text-capitalize h6">{{ countriesCount }} countries/territories with confirmed cases</span>-->
+             
+             
+              </div>
+              
+              <span class="h6 text-muted" *ngIf="selectedCountry!=null">History data:
+                &nbsp;<b>{{ selectedCountry.name }}</b>&nbsp;from
+                <b>{{ historyStartDay }}</b> to <b>{{ historyEndDay }}</b>
+              </span>
+            </div>
+            <div class="h6">
+              <div *ngIf="selectedCountry!=null">
+                <span><button type="button" class="btn btn-link" (click)="onSelectCountry(null)">Worldwide
+                    Today</button>|&nbsp;{{ selectedCountry.name }}</span>
+              </div>
+    
+    
+            </div>
+            <form class="col-4" *ngIf="selectedCountry==null">
+              <div class="input-group input-group-round">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons">filter_list</i>
+                  </span>
+                </div>
+                <input type="search" #searchInput [(ngModel)]="filterKey" class="form-control filter-list-input"
+                  placeholder="Filter by country" aria-label="Filter">
+              </div>
+            </form>
+
+          </div>
+          <div class="row p-1" style="height: 400px;overflow-y: auto;">
+          <table class="table table-striped table-sm table-responsive-sm table-hover table-outline mb-0" >
+            <thead class="thead-light">
+              <tr>
+                <!--<th>#</th>-->
+                <th *ngIf="selectedCountry==null">Country/Territory </th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(0)">Total<i
+                      class="material-icons text-small" *ngIf="sortflag==0">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(1)">Active<i
+                      class="material-icons text-small" *ngIf="sortflag==1">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(2)">New Cases<i
+                      class="material-icons text-small" *ngIf="sortflag==2">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(3)">Deaths<i
+                      class="material-icons text-small" *ngIf="sortflag==3">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(4)">New Deaths<i
+                      class="material-icons text-small" *ngIf="sortflag==4">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(5)">Critical<i
+                      class="material-icons text-small" *ngIf="sortflag==5">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(6)">Recovered<i
+                      class="material-icons text-small" *ngIf="sortflag==6">{{ sortArrow }}</i></button></th>
+                <th><button type="button" class="btn btn-link btn-sm" (click)="sort(7)">Fatality(%)<i
+                      class="material-icons text-small" *ngIf="sortflag==7">{{ sortArrow }}</i></button></th>
+                <th *ngIf="selectedCountry!=null">Time</th>
+                <th *ngIf="selectedCountry==null"><button type="button" class="btn btn-link btn-sm"
+                    (click)="sort(9)">Tests<i class="material-icons text-small"
+                      *ngIf="sortflag==9">{{ sortArrow }}</i></button></th>
+                <!--<th><a class="btn btn-link" (click)="exportToCsv()"><i class="material-icons">ballot</i>CSV</a></th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let event of events;let i=index">
+                <tr *ngIf="filterContains(event.country?.name)">
+                  <!--<td>{{i+1}}</td>-->
+                  <td class="font-weight-bolder" *ngIf="selectedCountry==null">
+                    <div ><button type="button" class="btn btn-link"
+                        (click)="onSelectCountry(event.country)">
+                        <img *ngIf="event.country.img!=null" alt="" width="32" [src]="'https://upload.wikimedia.org/wikipedia/commons/thumb' + event.country.img">
+                        <span class="text-capitalize">{{ event.country?.name }}</span></button></div>
+                  </td>
+                  <td>
+                    <div class="">{{ formatNum(event.total) }}</div>
+                  </td>
+                  <td>
+                    <div class="text-primary">{{ formatNum(event.active) }}</div>
+                  </td>
+                  <td>
+                    <div class="text-primary"><b>{{event.newCases == 0? '' : '+' + event.newCases.toString()}}</b></div>
+                  </td>
+                  <td>
+                    <div class="text-danger">{{ formatNum(event.deaths) }}</div>
+                  </td>
+                  <td>
+                    <div class="text-danger"><b>{{event.newDeaths == 0? '' : '+' + event.newDeaths.toString()}}</b>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-danger"><b>{{ formatNum(event.critical) }}</b></div>
+                  </td>
+                  <td>
+                    <div class="text-success">{{ formatNum(event.recovered) }}</div>
+                  </td>
+                  <td>
+                    <div class="text-danger"><b>{{ formatNum(event.fatality) }}</b></div>
+                  </td>
+                  <td *ngIf="selectedCountry!=null">
+                    <div class="text-muted text-small">{{ formatDate(event.date) }} GMT</div>
+                  </td>
+                  <td *ngIf="selectedCountry==null">
+                    <div class="text-muted text-small">{{ event.tests ==0? '---' : formatNum(event.tests) }}</div>
+                  </td>
+
+                  <!--<td></td>-->
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div> 
+          <div class="mt-2 col-auto">
+            <span class="text-body" *ngIf="selectedCountry==null">&nbsp;{{ topLabel}}</span>
+            <span class="text-body" *ngIf="selectedCountry!=null">History data:
+              &nbsp;<b>{{ selectedCountry.name }}</b>&nbsp;from
+              <b>{{ historyStartDay }}</b> to <b>{{ historyEndDay }}</b></span>
+
+            <div class="">
+              <!--outstanding cases-->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body" *ngIf="selectedCountry==null"><b>Recovered vs Deaths</b> - linear
+                    scale</span>
+                  <span class="h6 text-muted" *ngIf="selectedCountry!=null">Recovered vs Deaths</span>
+                  <select class="col-2 custom-select" id="ChartType" (change)="onChartTypeChange($event)"
+                    *ngIf="selectedCountry==null">
+                    <option value="radar">radar</option>
+                    <option value="horizontalBar">horizontalBar</option>
+                    <option value="bar">bar</option>
+                    <option value="line" selected>line</option>
+
+                  </select>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryCasesChart1" *ngIf="selectedCountry==null"></canvas>
+                  <canvas id="historyChart1" *ngIf="selectedCountry!=null"></canvas>
+                </div>
+              </div>
+              <!--active cases-->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body" *ngIf="selectedCountry==null"><b>Active Cases</b> - linear scale</span>
+                  <span class="h6 text-muted" *ngIf="selectedCountry!=null">Active Cases</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryActiveChart1"></canvas>
+
+                </div>
+              </div>
+
+              <!--new cases-->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body" *ngIf="selectedCountry==null"><b>New Cases</b> - linear scale</span>
+                  <span class="h6 text-muted" *ngIf="selectedCountry!=null">New Cases</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryNewCasesChart1"></canvas>
+
+                </div>
+              </div>
+
+              <!--new deaths-->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body" *ngIf="selectedCountry==null"><b>New Deaths</b> - linear scale</span>
+                  <span class="h6 text-muted" *ngIf="selectedCountry!=null">New Deaths</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryNewDeathsChart1"></canvas>
+
+                </div>
+              </div>
+              <!--fatality-->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body" *ngIf="selectedCountry==null"><b>Fatality rate (%)</b> - linear scale</span>
+                  <span class="h6 text-muted" *ngIf="selectedCountry!=null">Fatality rate (%)</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryFatalityChart1"></canvas>
+
+                </div>
+              </div>
+              <!--fatality-->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body" *ngIf="selectedCountry==null"><b>Critical Cases</b> - linear scale</span>
+                  <span class="h6 text-muted" *ngIf="selectedCountry!=null">Critical Cases</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryCriticalChart1"></canvas>
+
+                </div>
+              </div>
+              <!--tests-->
+              <div class="col-md-12" *ngIf="selectedCountry==null">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body"><b>Tests</b> - linear scale</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="countryTestsChart1"></canvas>
+
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+        <!--tab pandemic-->
+        <div class="tab-pane" id="pandemic" role="tabpanel">
+          <div class="col-auto">
+            <span class="text-body">Comparing Covid-19 with 21st century pandemics</span>
+
+            <div class="">
+              <!--diseases--->
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between p-1">
+                  <span class="text-body"><b>Pandemics Death Toll Comparison</b> - linear scale</span>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 450px;">
+                  <canvas id="diseasesChart1"></canvas>
+
+                </div>
+              </div>
+
+              <!--diseases-comparison-->
+              <div class="col-md-12">
+                <div class="d-flex flex-column justify-content-between p-1">
+                  <span class="text-body"><b>Pandemics Death Daily Progress Comparison</b> - linear scale</span>
+                 
+                  <div class="alert alert-info alert-dismissible fade show text-small">
+                    <strong>Tip:</strong>
+                    Click on any legend item (bottom) to hide a particular pandemic
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                </div>
+                <div class="chart-wrapper m-2 mx-3" style="height: 650px;">
+                  <canvas id="diseasesComparisonChart1"></canvas>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+      </div>
+
+      <!--end tabs-->
+
+    </div>
+
+
+  </div>
+</div>

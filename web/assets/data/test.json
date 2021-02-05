@@ -1,0 +1,781 @@
+[
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+24774",
+            "active": 309284,
+            "critical": 8702,
+            "recovered": 17245,
+            "total": 336131
+        },
+        "deaths": {
+            "new": "+1151",
+            "total": 9602
+        },
+        "tests": {
+            "total": 1758694
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T23:45:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+24728",
+            "active": 309238,
+            "critical": 8702,
+            "recovered": 17245,
+            "total": 336085
+        },
+        "deaths": {
+            "new": "+1151",
+            "total": 9602
+        },
+        "tests": {
+            "total": 1758508
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T23:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+23388",
+            "active": 307931,
+            "critical": 8623,
+            "recovered": 17242,
+            "total": 334745
+        },
+        "deaths": {
+            "new": "+1121",
+            "total": 9572
+        },
+        "tests": {
+            "total": 1758170
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T23:00:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+23373",
+            "active": 307916,
+            "critical": 8623,
+            "recovered": 17242,
+            "total": 334730
+        },
+        "deaths": {
+            "new": "+1121",
+            "total": 9572
+        },
+        "tests": {
+            "total": 1758170
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T22:45:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+22988",
+            "active": 307545,
+            "critical": 8623,
+            "recovered": 17242,
+            "total": 334345
+        },
+        "deaths": {
+            "new": "+1107",
+            "total": 9558
+        },
+        "tests": {
+            "total": 1756297
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T22:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+22988",
+            "active": 307583,
+            "critical": 8623,
+            "recovered": 17204,
+            "total": 334345
+        },
+        "deaths": {
+            "new": "+1107",
+            "total": 9558
+        },
+        "tests": {
+            "total": 1756297
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T22:15:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+22875",
+            "active": 307498,
+            "critical": 8623,
+            "recovered": 17177,
+            "total": 334232
+        },
+        "deaths": {
+            "new": "+1106",
+            "total": 9557
+        },
+        "tests": {
+            "total": 1755099
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T22:00:15+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+21870",
+            "active": 306510,
+            "critical": 8623,
+            "recovered": 17177,
+            "total": 333227
+        },
+        "deaths": {
+            "new": "+1089",
+            "total": 9540
+        },
+        "tests": {
+            "total": 1753400
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T21:45:12+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+21816",
+            "active": 306460,
+            "critical": 8623,
+            "recovered": 17177,
+            "total": 333173
+        },
+        "deaths": {
+            "new": "+1084",
+            "total": 9536
+        },
+        "tests": {
+            "total": 1751296
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T21:30:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+21660",
+            "active": 306471,
+            "critical": 8623,
+            "recovered": 17018,
+            "total": 333017
+        },
+        "deaths": {
+            "new": "+1076",
+            "total": 9528
+        },
+        "tests": {
+            "total": 1751296
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T20:45:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+21636",
+            "active": 306447,
+            "critical": 8623,
+            "recovered": 17018,
+            "total": 332993
+        },
+        "deaths": {
+            "new": "+1076",
+            "total": 9528
+        },
+        "tests": {
+            "total": 1751296
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T20:30:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+21237",
+            "active": 306072,
+            "critical": 8583,
+            "recovered": 17018,
+            "total": 332594
+        },
+        "deaths": {
+            "new": "+1052",
+            "total": 9504
+        },
+        "tests": {
+            "total": 1750055
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T20:15:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+20926",
+            "active": 305669,
+            "critical": 8583,
+            "recovered": 17115,
+            "total": 332283
+        },
+        "deaths": {
+            "new": "+1047",
+            "total": 9499
+        },
+        "tests": {
+            "total": 1746146
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T20:00:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+20162",
+            "active": 304944,
+            "critical": 8573,
+            "recovered": 17091,
+            "total": 331519
+        },
+        "deaths": {
+            "new": "+1032",
+            "total": 9484
+        },
+        "tests": {
+            "total": 1743009
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T19:45:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+19029",
+            "active": 303847,
+            "critical": 8569,
+            "recovered": 17091,
+            "total": 330386
+        },
+        "deaths": {
+            "new": "+996",
+            "total": 9448
+        },
+        "tests": {
+            "total": 1736201
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T19:30:07+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+18906",
+            "active": 303824,
+            "critical": 8542,
+            "recovered": 16995,
+            "total": 330263
+        },
+        "deaths": {
+            "new": "+992",
+            "total": 9444
+        },
+        "tests": {
+            "total": 1729314
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T19:15:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+18874",
+            "active": 304084,
+            "critical": 8542,
+            "recovered": 16705,
+            "total": 330231
+        },
+        "deaths": {
+            "new": "+990",
+            "total": 9442
+        },
+        "tests": {
+            "total": 1729314
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T19:00:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+17305",
+            "active": 302597,
+            "critical": 8542,
+            "recovered": 16700,
+            "total": 328662
+        },
+        "deaths": {
+            "new": "+913",
+            "total": 9365
+        },
+        "tests": {
+            "total": 1726725
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T18:45:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+16563",
+            "active": 301894,
+            "critical": 8522,
+            "recovered": 16700,
+            "total": 327920
+        },
+        "deaths": {
+            "new": "+874",
+            "total": 9326
+        },
+        "tests": {
+            "total": 1726457
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T18:30:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+16514",
+            "active": 301846,
+            "critical": 8519,
+            "recovered": 16700,
+            "total": 327871
+        },
+        "deaths": {
+            "new": "+873",
+            "total": 9325
+        },
+        "tests": {
+            "total": 1725812
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T17:45:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+16491",
+            "active": 301823,
+            "critical": 8519,
+            "recovered": 16700,
+            "total": 327848
+        },
+        "deaths": {
+            "new": "+873",
+            "total": 9325
+        },
+        "tests": {
+            "total": 1707153
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T17:30:03+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+12596",
+            "active": 298077,
+            "critical": 8493,
+            "recovered": 16690,
+            "total": 323953
+        },
+        "deaths": {
+            "new": "+734",
+            "total": 9186
+        },
+        "tests": {
+            "total": 1698778
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T17:00:06+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+12211",
+            "active": 297806,
+            "critical": 8474,
+            "recovered": 16590,
+            "total": 323568
+        },
+        "deaths": {
+            "new": "+720",
+            "total": 9172
+        },
+        "tests": {
+            "total": 1689223
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T16:45:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+12159",
+            "active": 297755,
+            "critical": 8474,
+            "recovered": 16590,
+            "total": 323516
+        },
+        "deaths": {
+            "new": "+719",
+            "total": 9171
+        },
+        "tests": {
+            "total": 1681482
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T16:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+12061",
+            "active": 297658,
+            "critical": 8474,
+            "recovered": 16590,
+            "total": 323418
+        },
+        "deaths": {
+            "new": "+718",
+            "total": 9170
+        },
+        "tests": {
+            "total": 1680330
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T16:15:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+11617",
+            "active": 297246,
+            "critical": 8468,
+            "recovered": 16579,
+            "total": 322974
+        },
+        "deaths": {
+            "new": "+697",
+            "total": 9149
+        },
+        "tests": {
+            "total": 1679303
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T16:00:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+10211",
+            "active": 295867,
+            "critical": 8468,
+            "recovered": 16570,
+            "total": 321568
+        },
+        "deaths": {
+            "new": "+679",
+            "total": 9131
+        },
+        "tests": {
+            "total": 1679303
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T15:45:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+10058",
+            "active": 295716,
+            "critical": 8468,
+            "recovered": 16570,
+            "total": 321415
+        },
+        "deaths": {
+            "new": "+677",
+            "total": 9129
+        },
+        "tests": {
+            "total": 1677776
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T15:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+9567",
+            "active": 295251,
+            "critical": 8456,
+            "recovered": 16553,
+            "total": 320924
+        },
+        "deaths": {
+            "new": "+668",
+            "total": 9120
+        },
+        "tests": {
+            "total": 1666877
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T15:15:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+960",
+            "active": 289005,
+            "critical": 8206,
+            "recovered": 14828,
+            "total": 312317
+        },
+        "deaths": {
+            "new": "+32",
+            "total": 8484
+        },
+        "tests": {
+            "total": 1662081
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T15:00:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+850",
+            "active": 288907,
+            "critical": 8206,
+            "recovered": 14828,
+            "total": 312207
+        },
+        "deaths": {
+            "new": "+20",
+            "total": 8472
+        },
+        "tests": {
+            "total": 1662081
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T14:45:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+849",
+            "active": 288910,
+            "critical": 8206,
+            "recovered": 14828,
+            "total": 312206
+        },
+        "deaths": {
+            "new": "+16",
+            "total": 8468
+        },
+        "tests": {
+            "total": 1662081
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T14:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+299",
+            "active": 288374,
+            "critical": 8206,
+            "recovered": 14828,
+            "total": 311656
+        },
+        "deaths": {
+            "new": "+2",
+            "total": 8454
+        },
+        "tests": {
+            "total": 1656897
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T14:15:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+280",
+            "active": 288355,
+            "critical": 8206,
+            "recovered": 14828,
+            "total": 311637
+        },
+        "deaths": {
+            "new": "+2",
+            "total": 8454
+        },
+        "tests": {
+            "total": 1656897
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T13:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+280",
+            "active": 288355,
+            "critical": 8206,
+            "recovered": 14828,
+            "total": 311637
+        },
+        "deaths": {
+            "new": "+2",
+            "total": 8454
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T08:15:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+280",
+            "active": 288358,
+            "critical": 8206,
+            "recovered": 14825,
+            "total": 311637
+        },
+        "deaths": {
+            "new": "+2",
+            "total": 8454
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T06:15:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+278",
+            "active": 288356,
+            "critical": 8206,
+            "recovered": 14825,
+            "total": 311635
+        },
+        "deaths": {
+            "new": "+2",
+            "total": 8454
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T06:00:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+34196",
+            "active": 288080,
+            "critical": 8206,
+            "recovered": 14825,
+            "total": 311357
+        },
+        "deaths": {
+            "new": "+1048",
+            "total": 8452
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T03:30:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+34196",
+            "active": 288164,
+            "critical": 8206,
+            "recovered": 14741,
+            "total": 311357
+        },
+        "deaths": {
+            "new": "+1048",
+            "total": 8452
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T01:00:05+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+33125",
+            "active": 287093,
+            "critical": 8206,
+            "recovered": 14741,
+            "total": 310286
+        },
+        "deaths": {
+            "new": "+1048",
+            "total": 8452
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T00:15:04+00:00"
+    },
+    {
+        "country": "USA",
+        "cases": {
+            "new": "+33053",
+            "active": 287029,
+            "critical": 8206,
+            "recovered": 14741,
+            "total": 310214
+        },
+        "deaths": {
+            "new": "+1040",
+            "total": 8444
+        },
+        "tests": {
+            "total": null
+        },
+        "day": "2020-04-05",
+        "time": "2020-04-05T00:00:05+00:00"
+    }
+]
