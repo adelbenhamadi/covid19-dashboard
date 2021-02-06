@@ -17,8 +17,6 @@ class Config {
   };
 
   static String globalAssetsHost = '';
-  static int CALENDAR_LIST_MAX = 30;
-  static int PROJECT_LIST_MAX = 30;
 
   static int fetchCount = 0;
   static void updateFetchCount(int c) {
